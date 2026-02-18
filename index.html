@@ -1,0 +1,245 @@
+<!--jonysins.html - Standalone HTML file -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Life Is Hard</title>
+  <style>
+    :root{--bg:#f7f7fb;--card:#ffffff;--muted:#6b7280;--accent:#4f46e5}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial}
+    body{background:var(--bg);color:#111827}
+    .container{max-width:1100px;margin:28px auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+    h1{font-size:20px;margin:0}
+    .btn{background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer}
+    .btn.secondary{background:#fff;color:#111;border:1px solid #e5e7eb}
+    .dropzone{background:var(--card);border:2px dashed #e6e7ee;padding:18px;border-radius:12px}
+    .dropzone.drag{background:#eef2ff;border-color:var(--accent)}
+    .muted{color:var(--muted);font-size:13px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin-top:16px}
+    .card{background:var(--card);border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.06);position:relative}
+    .card img,.card video{display:block;width:100%;height:150px;object-fit:cover}
+    .card .meta{padding:8px;font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .controls{position:absolute;top:8px;right:8px;display:flex;gap:6px;opacity:0;transition:opacity .15s}
+    .card:hover .controls{opacity:1}
+    .icon-btn{background:rgba(255,255,255,0.9);border-radius:6px;padding:6px;border:1px solid #eee;cursor:pointer}
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:9999;padding:16px}
+    .lightbox .inner{max-width:1100px;width:100%;max-height:90vh;background:transparent}
+    .lightbox img,.lightbox video{width:100%;height:calc(90vh - 64px);object-fit:contain;border-radius:8px}
+    .lb-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+    .small{font-size:13px;color:var(--muted)}
+    /* responsive tweaks */
+    @media (max-width:600px){.card img,.card video{height:120px}}
+  </style>
+</head>
+<body >
+  <div class="container">
+    <header>
+      <div>
+        <h3>Life is Hard</h3>
+        <div class="muted">Welcome to my all Friends</div>
+        
+       
+        <img width="200px" src="https://scontent.flyp14-1.fna.fbcdn.net/v/t39.30808-6/575185470_122214742022449849_5266499210699213065_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=101&ccb=1-7&_nc_sid=e06c5d&_nc_ohc=jkveXCiAuIQQ7kNvwH0bhHh&_nc_oc=AdnRG2QY0X_nLg0mp3b97wHEz5Cl8AG5rhYCCsmGYo6fQwfo_56BlQn6hB9xC70LGMI&_nc_zt=23&_nc_ht=scontent.flyp14-1.fna&_nc_gid=PoX7xE5DsF3SvFKkEHwFMg&oh=00_Afu1BcpYkYlxTDgYVpBSccfdk-3q_vgsU1OYqNspjBah0A&oe=699BB2E1">
+         <img width="250px" height="270" src="https://scontent.flyp14-1.fna.fbcdn.net/v/t39.30808-6/634685267_122231337272449849_8541058130654218272_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=102&ccb=1-7&_nc_sid=13d280&_nc_ohc=UnqPDeOSK0QQ7kNvwFaqpxN&_nc_oc=AdlaypoPOE-PPdMqp8io7h99C-1Z62SqfEw2VP0p_uBmsSPs9N6HOE5ladOOaoXnvJo&_nc_zt=23&_nc_ht=scontent.flyp14-1.fna&_nc_gid=O5wfFuW0Jfw14AVmvzsi7g&oh=00_AfuucCuNrB4la6MzacH7MZWcqtRav11UmmoMO-5Tj84Psg&oe=699BC035">
+        <img width="200px" height="270" src="https://scontent.flyp14-1.fna.fbcdn.net/v/t39.30808-6/630786622_122201147036333393_198617143036627416_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=_I9wMw8UnkUQ7kNvwFr6c-q&_nc_oc=AdkNKS42pczXguFPs0xe_WLOSp5rLJu5uybpiKPF-StBYvcnbXTFcz_Lbd8xMrCf4wQ&_nc_zt=23&_nc_ht=scontent.flyp14-1.fna&_nc_gid=BtUL1zmfNI-siTLunrwirg&oh=00_Afs2ClSAGwH0CeyvMQeFQeJfN20B5DN0Xgd1vdiJqiQADA&oe=699B8BB2">
+        <img width="200px"height="270" src="https://scontent.flyp14-1.fna.fbcdn.net/v/t39.30808-6/634605979_122231341256449849_7338141010097165435_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=104&ccb=1-7&_nc_sid=13d280&_nc_ohc=H0HUPv8oraAQ7kNvwF7L0Ck&_nc_oc=AdkL-0UEXuhmqfumEWUen1ovQB2rE7qCoBoLO9ABxfnpa31LkNA5YvM-ezlJEHvgHlg&_nc_zt=23&_nc_ht=scontent.flyp14-1.fna&_nc_gid=XNCLYpwQmVlqOVuLA18kvg&oh=00_AfuFwm2FhrK7TVNvmujB_hQZPjdveTBUDgahqynvcqCjkg&oe=699B92C7">
+        <img width="200px" src="https://scontent.flyp14-1.fna.fbcdn.net/v/t39.30808-6/632326515_122231337542449849_2697077830737783520_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=102&ccb=1-7&_nc_sid=13d280&_nc_ohc=Trz47hCY9EMQ7kNvwE34mq8&_nc_oc=Adk8lQh9rRby1hJedUNdw7ioipWH9RGLeh07lz9mrjO9JvMph0LZJULfDRIOdSi8mz0&_nc_zt=23&_nc_ht=scontent.flyp14-1.fna&_nc_gid=GR7voy7LwfyXbyTrakaK2Q&oh=00_AfsY9wfFT-COILFLXkRU_hQ057jTTTNJgdvfdJHpbM_7zA&oe=699BA24D">
+        <img width="200px" src="https://scontent.flyp14-1.fna.fbcdn.net/v/t39.30808-6/634894079_122231337110449849_6772199286628012024_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=107&ccb=1-7&_nc_sid=13d280&_nc_ohc=ek2oi_zoBs8Q7kNvwFWfRiA&_nc_oc=Adm6T4BZK7htnkkvZIXOXAY8dWVQ7BC0iaVVDPVyugsnRDNvoxDFKt1iDWHMXMlKC88&_nc_zt=23&_nc_ht=scontent.flyp14-1.fna&_nc_gid=GR7voy7LwfyXbyTrakaK2Q&oh=00_Afs1_tVpJ7P8df44_ETj4koVotLOyf769dmb50qbp9KYDA&oe=699BA863">
+        <img width="200px" height="210" src="https://scontent.flyp14-1.fna.fbcdn.net/v/t39.30808-6/636638522_122231336978449849_2925480851959793024_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=13d280&_nc_ohc=ZubsSSTzJEMQ7kNvwGzwcHi&_nc_oc=Adl3jZGOoEdZLE4ykC_aZXvYUBs-1XSOkyMKXoV8W26m-L8aouzBmfKtTRxu-t-EA9k&_nc_zt=23&_nc_ht=scontent.flyp14-1.fna&_nc_gid=7jtPArKESZN8gX0RzYIofw&oh=00_AftKZI0KRxC9o8sVnDYM-KqEhnK3CWdnhLEPNTkRuEX7IA&oe=699BB757">
+        <img width="200px" src="https://scontent.flyp14-1.fna.fbcdn.net/v/t39.30808-6/636989360_122231336816449849_4757394263509709607_n.jpg?stp=dst-jpg_p180x540_tt6&_nc_cat=110&ccb=1-7&_nc_sid=13d280&_nc_ohc=LWxuUPU357AQ7kNvwE_t_mk&_nc_oc=AdlHbYLjb-xXyY1gPt5x-6vlr0T4qKucSRJIgzqmnEtoogJROBOotgWlatfAy7HN0hc&_nc_zt=23&_nc_ht=scontent.flyp14-1.fna&_nc_gid=YkRltehsHTzG8kJUYTJwVw&oh=00_Afth34fm6KZHvFRxG6VrAsDF0-C8TWh3DAVNgUVOlZv6jw&oe=699BA718">
+        <img width="200px" src="https://scontent.flyp14-1.fna.fbcdn.net/v/t39.30808-6/590616685_122178520442790238_7522591214123192433_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=X7IkXRM0XhkQ7kNvwEy8hEF&_nc_oc=Adlv60nFsM_0ucwyYfjqUjm6jNXxKCSfa8uaJEGjzPfYtqIXrAczddJMMKXrZeZRQuk&_nc_zt=23&_nc_ht=scontent.flyp14-1.fna&_nc_gid=kNOnUVo04RQPW64RE7A_fw&oh=00_Afu_Md_QwFwl3ketDkoDBRRiVve6f8jHnoZk6YYlg20NUw&oe=699BC2C9">
+        
+      </div>
+
+      <div style="display:flex;gap:8px;align-items:center">
+        <button id="uploadBtn" class="btn">Upload</button>
+        
+      </div>
+    </header>
+
+    <div id="dropzone" class="dropzone">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div>
+          <div style="font-weight:600">Upload images or videos here</div>
+          <div class="muted">or click Upload.</div>
+        </div>
+        <div>
+          <input id="fileInput" type="file" accept="image/*,video/*" multiple style="display:none" />
+          <button id="chooseBtn" class="btn secondary">Choose files…</button>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <div id="empty" class="muted" style="padding:28px;text-align:center"></div>
+      <div id="grid" class="grid" style="display:none"></div>
+    </main>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" style="display:none" class="lightbox" aria-hidden="true">
+    <div class="inner" role="dialog" aria-modal="true">
+      <div class="lb-top">
+        <div class="small" id="lbName"></div>
+        <div style="display:flex;gap:8px">
+          <button id="prevBtn" class="icon-btn" title="Previous">◀</button>
+          <button id="nextBtn" class="icon-btn" title="Next">▶</button>
+          <button id="closeBtn" class="icon-btn" title="Close">✕</button>
+        </div>
+      </div>
+      <div id="lbContent"></div>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'media_gallery_html_v1';
+    const MAX_ITEMS = 80; // safety cap
+
+    const fileInput = document.getElementById('fileInput');
+    const chooseBtn = document.getElementById('chooseBtn');
+    const uploadBtn = document.getElementById('uploadBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const dropzone = document.getElementById('dropzone');
+    const grid = document.getElementById('grid');
+    const empty = document.getElementById('empty');
+
+    const lightbox = document.getElementById('lightbox');
+    const lbContent = document.getElementById('lbContent');
+    const lbName = document.getElementById('lbName');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const closeBtn = document.getElementById('closeBtn');
+
+    let items = [];
+    let currentIndex = -1;
+
+    function uid() { return Math.random().toString(36).slice(2,9); }
+
+    // load
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(raw){ items = JSON.parse(raw); }
+    }catch(e){ console.warn('load failed',e) }
+
+    function persist(){
+      try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(items)); }catch(e){ console.warn('persist failed',e) }
+    }
+
+    function renderGrid(){
+      grid.innerHTML = '';
+      if(items.length === 0){ grid.style.display='none'; empty.style.display='block'; return; }
+      grid.style.display='grid'; empty.style.display='none';
+      items.forEach((it, idx) => {
+        const card = document.createElement('div'); card.className='card';
+        if(it.type.startsWith('image/')){
+          const img = document.createElement('img'); img.src = it.dataUrl; img.alt = it.name; img.loading='lazy';
+          img.addEventListener('click', ()=> openLightbox(idx));
+          card.appendChild(img);
+        } else {
+          const vidWrap = document.createElement('div'); vidWrap.style.position='relative'; vidWrap.style.height='150px'; vidWrap.style.background='#000';
+          const video = document.createElement('video'); video.src=it.dataUrl; video.muted=true; video.playsInline=true; video.style.width='100%'; video.style.height='100%'; video.style.objectFit='cover';
+          vidWrap.appendChild(video);
+          const playOverlay = document.createElement('div'); playOverlay.style.position='absolute'; playOverlay.style.inset='0'; playOverlay.style.display='flex'; playOverlay.style.alignItems='center'; playOverlay.style.justifyContent='center'; playOverlay.style.pointerEvents='none';
+          playOverlay.innerHTML = '<div style="background:rgba(255,255,255,0.9);padding:8px;border-radius:50%">▶</div>';
+          vidWrap.appendChild(playOverlay);
+          vidWrap.addEventListener('click', ()=> openLightbox(idx));
+          card.appendChild(vidWrap);
+        }
+
+        const controls = document.createElement('div'); controls.className='controls';
+        const delB = document.createElement('button'); delB.className='icon-btn'; delB.title='Delete'; delB.innerText='🗑';
+        delB.addEventListener('click', (e)=>{ e.stopPropagation(); removeItem(it.id); });
+        controls.appendChild(delB);
+        card.appendChild(controls);
+
+        const meta = document.createElement('div'); meta.className='meta'; meta.textContent = it.name;
+        card.appendChild(meta);
+
+        grid.appendChild(card);
+      });
+    }
+
+    function addFiles(fileList){
+      const arr = Array.from(fileList).slice(0, 30);
+      const readPromises = arr.map(file => new Promise((res,rej)=>{
+        const reader = new FileReader();
+        reader.onerror = ()=> rej(new Error('read error'));
+        reader.onload = ()=> res({ id: uid(), name: file.name, type: file.type, dataUrl: reader.result });
+        // size limit for demo: 30MB
+        if(file.size > 200 * 1024 * 1024){ alert(file.name + ' is larger than 200MB and will be skipped'); res(null); return; }
+        reader.readAsDataURL(file);
+      }));
+
+      Promise.all(readPromises).then(results=>{
+        const valid = results.filter(Boolean);
+        if(valid.length===0) return;
+        items = valid.concat(items).slice(0, MAX_ITEMS);
+        persist(); renderGrid();
+      }).catch(e=>console.error(e));
+    }
+
+    fileInput.addEventListener('change', (e)=>{
+      if(e.target.files && e.target.files.length) addFiles(e.target.files);
+      e.target.value = '';
+    });
+    chooseBtn.addEventListener('click', ()=> fileInput.click());
+    uploadBtn.addEventListener('click', ()=> fileInput.click());
+
+    // drag & drop
+    dropzone.addEventListener('dragover', (e)=>{ e.preventDefault(); dropzone.classList.add('drag'); });
+    dropzone.addEventListener('dragleave', (e)=>{ e.preventDefault(); dropzone.classList.remove('drag'); });
+    dropzone.addEventListener('drop', (e)=>{ e.preventDefault(); dropzone.classList.remove('drag'); if(e.dataTransfer.files && e.dataTransfer.files.length) addFiles(e.dataTransfer.files); });
+
+    function removeItem(id){
+      if(!confirm('Delete this item?')) return;
+      items = items.filter(x=>x.id !== id);
+      persist(); renderGrid();
+    }
+
+    clearBtn.addEventListener('click', ()=>{
+      if(!confirm('Clear all media from this demo gallery? This cannot be undone.')) return;
+      items = []; persist(); renderGrid();
+    });
+
+    // Lightbox
+    function openLightbox(index){
+      currentIndex = index; updateLightbox(); lightbox.style.display='flex'; lightbox.setAttribute('aria-hidden','false');
+    }
+    function closeLightbox(){ lightbox.style.display='none'; lightbox.setAttribute('aria-hidden','true'); lbContent.innerHTML=''; }
+    function updateLightbox(){
+      const it = items[currentIndex]; if(!it) return;
+      lbName.textContent = it.name + ` (${currentIndex+1} of ${items.length})`;
+      lbContent.innerHTML = '';
+      if(it.type.startsWith('image/')){
+        const img = document.createElement('img'); img.src = it.dataUrl; img.alt = it.name; lbContent.appendChild(img);
+      } else {
+        const video = document.createElement('video'); video.src = it.dataUrl; video.controls=true; video.autoplay=true; lbContent.appendChild(video);
+      }
+    }
+    prevBtn.addEventListener('click', (e)=>{ e.stopPropagation(); if(items.length===0) return; currentIndex = (currentIndex -1 + items.length) % items.length; updateLightbox(); });
+    nextBtn.addEventListener('click', (e)=>{ e.stopPropagation(); if(items.length===0) return; currentIndex = (currentIndex +1) % items.length; updateLightbox(); });
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e)=>{
+      if(lightbox.style.display !== 'none'){
+        if(e.key === 'Escape') closeLightbox();
+        if(e.key === 'ArrowLeft') prevBtn.click();
+        if(e.key === 'ArrowRight') nextBtn.click();
+      }
+    });
+
+    renderGrid();
+
+  </script>
+ </div>
+    <div style="background:rgb(205, 212, 212);"><h1>About</h1>
+  <h3>It is a Friends website. 
+  Members are
+   Zawar Baig,  Ali Haider,  Shahzaib Hussain,  Qamar Abbas,  Zain Bashir,  Maan Afzal, Tasleem, Adeel, Mudassar</h3>
+    </div>
+ 
+</body>
+</html>
